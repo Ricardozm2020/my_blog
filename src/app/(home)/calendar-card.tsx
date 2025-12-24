@@ -5,12 +5,13 @@ import { CARD_SPACING } from '@/consts'
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import { cn } from '@/lib/utils'
+import { HomeDraggableLayer } from './home-draggable-layer'
 
 dayjs.locale('zh-cn')
 
 export default function CalendarCard() {
 	const center = useCenterStore()
-	const { cardStyles } = useConfigStore()
+	const { cardStyles, siteContent } = useConfigStore()
 	const now = dayjs()
 	const currentDate = now.date()
 	const firstDayOfMonth = now.startOf('month')
@@ -25,35 +26,48 @@ export default function CalendarCard() {
 	const y = styles.offsetY !== null ? center.y + styles.offsetY : center.y - clockCardStyles.offset + CARD_SPACING
 
 	return (
-		<Card order={styles.order} width={styles.width} height={styles.height} x={x} y={y}>
-			<h3 className='text-secondary text-sm'>
-				{now.format('YYYY/M/D')} {now.format('ddd')}
-			</h3>
-			<ul className='text-secondary mt-3 grid h-[206px] grid-cols-7 gap-2 text-sm'>
-				{new Array(7).fill(0).map((_, index) => {
-					const isCurrentWeekday = index === currentWeekday
-					return (
-						<li key={index} className={cn('flex items-center justify-center font-medium', isCurrentWeekday && 'text-brand')}>
-							{dates[index]}
-						</li>
-					)
-				})}
+		<HomeDraggableLayer cardKey='calendarCard' x={x} y={y} width={styles.width} height={styles.height}>
+			<Card order={styles.order} width={styles.width} height={styles.height} x={x} y={y} className='flex flex-col'>
+				{siteContent.enableChristmas && (
+					<>
+						<img
+							src='/images/christmas/snow-7.webp'
+							alt='Christmas decoration'
+							className='pointer-events-none absolute'
+							style={{ width: 150, right: -12, top: -12, opacity: 0.8 }}
+						/>
+					</>
+				)}
 
-				{new Array(firstDayWeekday).fill(0).map((_, index) => (
-					<li key={`empty-${index}`} />
-				))}
+				<h3 className='text-secondary text-sm'>
+					{now.format('YYYY/M/D')} {now.format('ddd')}
+				</h3>
+				<ul className={cn('text-secondary mt-3 grid h-[206px] flex-1 grid-cols-7 gap-2 text-sm', (styles.height < 240 || styles.width < 240) && 'text-xs')}>
+					{new Array(7).fill(0).map((_, index) => {
+						const isCurrentWeekday = index === currentWeekday
+						return (
+							<li key={index} className={cn('flex items-center justify-center font-medium', isCurrentWeekday && 'text-brand')}>
+								{dates[index]}
+							</li>
+						)
+					})}
 
-				{new Array(daysInMonth).fill(0).map((_, index) => {
-					const day = index + 1
-					const isToday = day === currentDate
-					return (
-						<li key={day} className={cn('flex items-center justify-center rounded-lg', isToday && 'bg-linear border font-medium')}>
-							{day}
-						</li>
-					)
-				})}
-			</ul>
-		</Card>
+					{new Array(firstDayWeekday).fill(0).map((_, index) => (
+						<li key={`empty-${index}`} />
+					))}
+
+					{new Array(daysInMonth).fill(0).map((_, index) => {
+						const day = index + 1
+						const isToday = day === currentDate
+						return (
+							<li key={day} className={cn('flex items-center justify-center rounded-lg', isToday && 'bg-linear border font-medium')}>
+								{day}
+							</li>
+						)
+					})}
+				</ul>
+			</Card>
+		</HomeDraggableLayer>
 	)
 }
 

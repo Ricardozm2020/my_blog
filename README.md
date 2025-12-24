@@ -135,6 +135,10 @@ const LiquidGrass = dynamic(() => import('@/components/liquid-grass'), { ssr: fa
 QQ 群：[https://qm.qq.com/q/spdpenr4k2](https://qm.qq.com/q/spdpenr4k2)
 > 不好意思，之前的那个qq群ID（1021438316），不知道为啥搜不到😂
 
+微信群：刚建好了一个微信群，没有 qq 的可以用这个微信群
+![](https://www.yysuni.com/blogs/readme/343f2c62035b8e23.webp)
+
+
 应该主要是我自己亲自帮助你们遇到问题怎么办。（后续看看有没有好心人）
 
 希望多多的非程序员加入 blogger 行列，web blog 还是很好玩的，属于自己的 blog 世界。
@@ -146,3 +150,13 @@ QQ 群：[https://qm.qq.com/q/spdpenr4k2](https://qm.qq.com/q/spdpenr4k2)
 因为这个 Card 是全局都在的，所以放在了 `src/components` 目录
 
 ![](https://www.yysuni.com/blogs/readme/9780c38f886322fd.png)
+
+## Star History
+
+<a href="https://www.star-history.com/#YYsuni/2025-blog-public&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=YYsuni/2025-blog-public&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=YYsuni/2025-blog-public&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=YYsuni/2025-blog-public&type=date&legend=top-left" />
+ </picture>
+</a>
