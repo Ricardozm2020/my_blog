@@ -9,5 +9,17 @@
     "date": "2025-11-25",
     "summary": "压缩图片的讨论",
     "cover": "/blogs/texture-format/2c7d9391c47a1876.jpg"
+  },
+  {
+    "slug": "vibe-coding-thought",
+    "title": "Vibe 编程思考",
+    "tags": [
+      "vibe coding",
+      "vibe engineering",
+      "claude code"
+    ],
+    "date": "2025-12-24",
+    "summary": "氛围编程------->氛围工程",
+    "cover": "/blogs/texture-format/2c7d9391c47a1876.jpg"
   }
 ]
